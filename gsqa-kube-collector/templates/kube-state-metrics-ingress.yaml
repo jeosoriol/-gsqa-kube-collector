@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "gsqa-kube-collector-letsencrypt"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: gsqa-collector
+  namespace: gsqa-kube-collector
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.ingress.host }}
+    secretName: kube-state-metrics-tls
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: gsqa-kube-collector-kube-state-metrics
+                port:
+                  number: 80
+            path: /gsqa-collector(/|$)(.*)
+            pathType: Prefix

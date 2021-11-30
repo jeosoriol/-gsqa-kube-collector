@@ -1,0 +1,9 @@
+dependencies:
+- name: kube-state-metrics
+  repository: https://charts.bitnami.com/bitnami
+  version: 2.1.7
+- name: ingress-nginx
+  repository: https://kubernetes.github.io/ingress-nginx
+  version: 3.36.0
+digest: sha256:b2917e4ecdc1dae55a7da5dacb91feabe0fe4517768164cb723858bf4609be89
+generated: "2021-09-13T19:47:56.6091905-05:00"

@@ -1,0 +1,49 @@
+# Default values for gsqa-kube-collector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+kube-state-metrics:
+  kubeResources:
+    certificatesigningrequests: false
+    configmaps: false
+    cronjobs: false
+    daemonsets: true
+    deployments: true
+    endpoints: false
+    horizontalpodautoscalers: false
+    ingresses: false
+    jobs: true
+    limitranges: false
+    mutatingwebhookconfigurations: false
+    namespaces: true
+    networkpolicies: false
+    nodes: true
+    persistentvolumeclaims: true
+    persistentvolumes: true
+    poddisruptionbudgets: false
+    pods: true
+    replicasets: false
+    replicationcontrollers: false
+    resourcequotas: false
+    secrets: false
+    services: false
+    statefulsets: true
+    storageclasses: false
+    verticalpodautoscalers: false
+    validatingwebhookconfigurations: false
+    volumeattachments: false
+  service:
+    port: 80
+
+ingress-nginx:
+  enabled: true  
+  controller:
+    publishService:
+      enabled: true
+
+cert:
+  email: "carlos.gordillo@correounivalle.edu.co"
+ingress:
+  host: "20.81.83.78.nip.io"
+  class: "nginx"
+
